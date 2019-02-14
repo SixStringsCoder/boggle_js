@@ -1,0 +1,67 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* by Rawpixel at https://unsplash.com/photos/GR53ML6abnI?utm_source=CodePen&utm_medium=referral&utm_campaign=api-credit */
+  background: url('https://images.unsplash.com/photo-1521710927254-3dd9ef96a3fa?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ')
+}
+
+#container {
+  width: 500px;
+  height: 500px;
+  background-color: #9d6037;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 16px black;
+}
+
+#inner-frame {
+  width: 450px;
+  height: 450px;
+  background-color: #8D6E63;
+  display: grid;
+  grid-template: repeat( 4, 1fr) / repeat( 4, 1fr);
+
+}
+
+.die-container {
+  width: 100%;
+  height: 100%;
+  justify-items: center;
+  background-color: tan;
+  border: 4px solid #3E2723;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.die {
+  width: 75%;
+  height: 75%;
+  background-color: #fff;
+  box-shadow: 0 0 5px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Shojumaru', cursive;
+  font-size: 3.2rem;
+}
+
+#btn-cont {
+  margin: 20px;
+}
+
+#shakeBtn {
+  padding: 15px;
+  font-size: 2rem;
+  font-family: 'Shojumaru', cursive;
+  background-color: #fff;
+  box-shadow: 1px 1px 2px 1px black;
+}
+#shakeBtn:active {
+  box-shadow: inset 1px 1px 2px 1px black;
+}
