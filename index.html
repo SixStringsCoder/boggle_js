@@ -4,22 +4,56 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Shojumaru" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
     <title>Boggle the Mind</title>
   </head>
 <body>
 
-  <!-- Add a Timer Here -->
-
   <main id="container">
-    <section id="inner-frame">
-      <!-- boggle dice -->
-    </section>
+    <header id="head">
+      <div class="head-item" id="timer">Timer 3:00</div>
+      <div class="head-item" id="title">Boggle the Mind</div>
+      <div class="head-item" id="points">100 points</div>
+    </header>
+
+    <section id="body-container">
+
+      <div class="body-section" id="body-left">
+        <section id="gameboard-container">
+          <section id="inner-frame">
+            <!-- boggle dice -->
+          </section>
+        </section>
+
+        <section class="btnSection">
+          <div class="btn-cont">
+            <button type="button" class="boggleBtn" id="shakeBtn">Shake</button>
+          </div>
+          <div class="btn-cont">
+            <button type="submit" class="boggleBtn" id="addWordBtn">Add Word</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="body-section" id="body-right">
+        <section id="word-list-container">
+          <h3 id="word-list-header">Word List</h3>
+          <ol id="word-list">
+            <li class="word">fax</li>
+            <li class="word">coin</li>
+            <li class="word">star</li>
+            <li class="word">grub</li>
+            <li class="word">bib</li>
+            <li class="word">brute</li>
+            <li class="word">hoop</li>
+            <li class="word">hairs</li>
+            <li class="word">bats</li>
+            <li class="word">sold</li>
+          </ol>
+        </section>
+       </div>
+
+      </section>
   </main>
-
-  <div id="btn-cont">
-    <button id="shakeBtn">Shake</button>
-  </div>
-
-</body>
 <script type="text/javascript" src="script.js"></script>
 </html>

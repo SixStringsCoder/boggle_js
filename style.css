@@ -1,15 +1,42 @@
-body {
+* {
+    font-family: 'Shojumaru', cursive;
+}
+
+#container {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* by Rawpixel at https://unsplash.com/photos/GR53ML6abnI?utm_source=CodePen&utm_medium=referral&utm_campaign=api-credit */
   background: url('https://images.unsplash.com/photo-1521710927254-3dd9ef96a3fa?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ')
 }
 
-#container {
+#head {
+  width: 100%;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #90572E;
+  color: #FFF;
+  text-shadow: 1px 1px 2px #000;
+  font-size: 2.2rem;
+  margin: 0 0 20px 0;
+}
+#timer,
+#points {
+   font-size: 1.2rem;
+  color: #F6DFB1;
+}
+
+#body-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#gameboard-container {
   width: 500px;
   height: 500px;
   background-color: #9d6037;
@@ -25,7 +52,6 @@ body {
   background-color: #8D6E63;
   display: grid;
   grid-template: repeat( 4, 1fr) / repeat( 4, 1fr);
-
 }
 
 .die-container {
@@ -51,17 +77,48 @@ body {
   font-size: 3.2rem;
 }
 
-#btn-cont {
+.selected {
+  background-color: #9D392A;
+  color: #FFF;
+}
+
+.btnSection {
+  display: flex;
+}
+
+.btn-cont {
   margin: 20px;
 }
 
-#shakeBtn {
+.boggleBtn {
   padding: 15px;
   font-size: 2rem;
-  font-family: 'Shojumaru', cursive;
   background-color: #fff;
   box-shadow: 1px 1px 2px 1px black;
 }
-#shakeBtn:active {
+.boggleBtn:active {
   box-shadow: inset 1px 1px 2px 1px black;
+}
+
+#word-list-container {
+  width: 100%;
+  height: 80vh;
+  background-color: #f3f0e4;
+  padding: 20px;
+  box-shadow: 0 0 5px black;
+}
+#word-list-header {
+  font-size: 2rem;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+#word-list {
+  width: 100%;
+  line-height: 230%;
+  font-family: 'Open Sans', sans-serif;
+  list-style-type: decimal;
+  padding-left: 40px;
+}
+#word-list > li {
+  font-size: 1.8rem;
 }

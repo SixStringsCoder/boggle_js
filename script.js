@@ -35,3 +35,9 @@ shakeBtn.addEventListener('click', () => {
 });
 
 shakeDice(letters);
+
+// Select die to make a word
+innerFrame.addEventListener('click', (e) => {
+  let die = document.getElementById(e.target.id);
+  die.classList.add('selected');
+})
