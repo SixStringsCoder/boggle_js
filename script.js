@@ -41,3 +41,33 @@ innerFrame.addEventListener('click', (e) => {
   let die = document.getElementById(e.target.id);
   die.classList.add('selected');
 })
+
+
+
+// API to check word submitted
+const addWord = document.getElementById('addWordBtn');
+
+addWord.addEventListener('click', () => {
+  return collectData();
+});
+
+function checkStatus(response) {
+  if (response.ok) {
+    return Promise.resolve(response);
+  } else {
+    return Promise.reject(new Error(response.statusText));
+  }
+}
+
+function collectData() {
+  fetch('https://montanaflynn-spellcheck.p.rapidapi.com/check/?text=frgo', {
+    method: 'GET',
+    headers:{
+      "X-RapidAPI-Key": ""
+    }
+  })
+    .then(response => checkStatus(response))
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log(`Oops! ${error}`))
+}
