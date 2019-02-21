@@ -6,6 +6,7 @@ const letters = [ "E", "B", "O", "C", "A", "D", "F", "G", "H", "J", "U", "K", "L
 // const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 const innerFrame = document.querySelector('#inner-frame');
+const word = [];
 
 const shakeDice = (arrOfLetters) => {
   const numbOfDice = 16;
@@ -39,15 +40,23 @@ shakeDice(letters);
 // Select die to make a word
 innerFrame.addEventListener('click', (e) => {
   let die = document.getElementById(e.target.id);
-  die.classList.add('selected');
+  die.classList.toggle('selected');
+  word.push(die.innerHTML);
+  console.log(word);
 })
 
-
+const addToWordList = (arrOfLetters) => {
+  let wordtoList = arrOfLetters.join('');
+  let newWord = `<li class="word">${wordtoList}</li>`
+  document.getElementById('word-list').innerHTML += newWord;
+  word.splice(0, word.length);
+}
 
 // API to check word submitted
 const addWord = document.getElementById('addWordBtn');
 
 addWord.addEventListener('click', () => {
+  addToWordList(word);
   return collectData();
 });
 
@@ -63,7 +72,7 @@ function collectData() {
   fetch('https://montanaflynn-spellcheck.p.rapidapi.com/check/?text=frgo', {
     method: 'GET',
     headers:{
-      "X-RapidAPI-Key": ""
+      "X-RapidAPI-Key": "5f472caf1emshe68cb4cd081fd36p15ca42jsn96d83fadda9c"
     }
   })
     .then(response => checkStatus(response))
