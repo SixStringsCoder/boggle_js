@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: url('https://images.unsplash.com/photo-1521710927254-3dd9ef96a3fa?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ')
+  background: #d8bd93 url('https://images.unsplash.com/photo-1521710927254-3dd9ef96a3fa?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ')
 }
 
 #head {
@@ -25,21 +25,27 @@
   margin: 0 0 20px 0;
 }
 #timer,
-#points {
-   font-size: 1.2rem;
+#timer-cont,
+#points-cont {
+ font-size: 1.2rem;
   color: #F6DFB1;
+}
+#timer,
+#points {
+  letter-spacing: 5px;
+  font-size: 1.5rem;
+  color: white;
 }
 
 #body-container {
   width: 100%;
-  height: 100vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 #gameboard-container {
-  width: 500px;
-  height: 500px;
+  width: 470px;
+  height: 470px;
   background-color: #9d6037;
   display: flex;
   justify-content: center;
@@ -48,11 +54,13 @@
 }
 
 #inner-frame {
-  width: 450px;
-  height: 450px;
+  width: 430px;
+  height: 430px;
   background-color: #8D6E63;
   display: grid;
   grid-template: repeat( 4, 1fr) / repeat( 4, 1fr);
+  justify-items: center;
+  align-items: center;
 }
 
 .die-container {
@@ -122,4 +130,7 @@
 }
 #word-list > li {
   font-size: 1.8rem;
+}
+.notaWord {
+  text-decoration: line-through;
 }
