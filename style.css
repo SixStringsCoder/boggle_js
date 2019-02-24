@@ -109,6 +109,7 @@
   box-shadow: inset 1px 1px 2px 1px black;
 }
 
+/* WORD LIST */
 #word-list-container {
   width: 100%;
   height: auto;
@@ -133,4 +134,33 @@
 }
 .notaWord {
   text-decoration: line-through;
+}
+
+/* INSTRUCTIONS */
+#instructions-cont {
+  width: 100%;
+  padding: 10px 0 30px;
+  display: flex;
+  justify-content: center;
+}
+#instructions {
+  width: 85%;
+  background-color: #fff;
+  font-family: Merriweather, serif;
+  font-size: 1.2rem;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.instr-text {
+  margin: 10px 0;
+  text-align: justify;
+  font-weight: bold;
+}
+.instr-list {
+  margin: 0 0 0 40px;
+}
+#instructions ul > li {
+  list-style-type: circle;
+  line-height: 150%;
 }

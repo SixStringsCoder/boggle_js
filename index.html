@@ -12,9 +12,9 @@
 
   <main id="container">
     <header id="head">
-      <div class="head-item" id="timer">Timer 3:00</div>
+      <div class="head-item" id="timer-cont">Timer: <span id="timer">180</span></div>
       <div class="head-item" id="title">Boggle the Mind</div>
-      <div class="head-item" id="points">100 points</div>
+      <div class="head-item" id="points-cont">Points: <span id="points">0</span></div>
     </header>
 
     <section id="body-container">
@@ -40,11 +40,38 @@
         <section id="word-list-container">
           <h3 id="word-list-header">Word List</h3>
           <ol id="word-list">
+
           </ol>
+
         </section>
        </div>
 
       </section>
+
+      <section id="instructions-cont">
+        <div id="instructions">
+            <p class="instr-text">A player has three minutes to find as many words as they can in the grid, according to the following rules:</p>
+            <ul class="instr-list">
+              <li>The letters must be adjoining in a 'chain'.</li>
+              <li>Words must contain at least three letters.</li>
+              <li>No letter cube may be used more than once within a single word.</li>
+              <li>Click letters in order then 'Add Word'</li>
+              <li>Your entry will be checked using online API</li>
+            </ul>
+
+            <p class="instr-text">Scoring:</p>
+            <ul class="instr-list">
+              <li>Fewer than 3 Letters: 0 points</li>
+              <li>3 Letters: 1 point</li>
+              <li>4 Letters: 1 point</li>
+              <li>5 Letters: 2 points</li>
+              <li>6 Letters: 3 points</li>
+              <li>7 Letters: 4 points</li>
+              <li>8 or More Letters: 11 points</li>
+            <ul>
+
+          </div>
+    </section>
   </main>
 <script type="text/javascript" src="script.js"></script>
 </html>
