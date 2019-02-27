@@ -6,11 +6,13 @@ const letters = [ "E", "B", "O", "C", "A", "D", "F", "G", "H", "J", "U", "K", "L
 // const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
 const innerFrame = document.querySelector('#inner-frame');
+const gameboard = document.querySelector('#gameboard-container');
 const shakeBtn = document.getElementById('shakeBtn');
 const wordlistDOM = document.querySelector('#word-list');
 const addWord = document.getElementById('addWordBtn');
 const word = [];
 const wordList = [];
+let isShaking = false;
 
 const shakeDice = (arrOfLetters) => {
   const numbOfDice = 16;
@@ -25,7 +27,14 @@ const shakeDice = (arrOfLetters) => {
   }
 }
 
-
+const stopShaking = () => {
+  gameboard.classList.remove('shake-container');
+  isShaking = false;
+}
+const shakeGameboard = () => {
+  gameboard.classList.add('shake-container');
+  setTimeout(stopShaking, 1000);
+}
 
 // Load start screen with new letters
 shakeDice(letters);
@@ -48,6 +57,8 @@ const clearWordList = () => {
 shakeBtn.addEventListener('click', () => {
   clearWordList();
   removeOldLetters();
+  isShaking = true;
+  shakeGameboard();
   shakeDice(letters);
   timer();
 });
@@ -68,8 +79,8 @@ innerFrame.addEventListener('click', (e) => {
 
 const addToWordList = (arrOfLetters) => {
   let wordtoList = arrOfLetters.join('');
-  collectData(wordtoList.toLowerCase());
-  let newWord = `<li class="word">${wordtoList}</li>`
+  collectData(wordtoList);
+  let newWord = `<li class="word">${wordtoList.toLowerCase()}</li>`
   document.getElementById('word-list').innerHTML += newWord;
   wordList.push(wordtoList);
   word.splice(0, word.length);
@@ -111,7 +122,7 @@ const wordIsRight = () => {
 const checkWord = (dataObj) => {
   const notaWord = Object.keys(dataObj.corrections).length;
   // Length of 1 means word is wrong, 'corrections' are present
-  // Length of 0 means word is right, no 'corrections' are given
+  // Length of 0 means word is right, no corrections are given
   notaWord ? wordIsWrong() : wordIsRight();
   //console.log(dataObj);
 }
@@ -138,7 +149,8 @@ const timer = () => {
   const t = setInterval(runTimer, 1000);
 
   function runTimer() {
-    if (startTime === 0) {
+    if (startTime === 0 || isShaking) {
+      startTime = 180;
       clearInterval(t);
     }
     timeDisplay.innerHTML = startTime;
