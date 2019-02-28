@@ -10,7 +10,6 @@ const gameboard = document.querySelector('#gameboard-container');
 const shakeBtn = document.getElementById('shakeBtn');
 const wordlistDOM = document.querySelector('#word-list');
 const scoreboard = document.querySelector('#points');
-const wordPoints = document.querySelectorAll('.wordpoints');
 const addWord = document.getElementById('addWordBtn');
 const word = [];
 const wordList = [];
@@ -60,6 +59,7 @@ const clearWordList = () => {
 
 shakeBtn.addEventListener('click', () => {
   clearWordList();
+  resetPoints();
   removeOldLetters();
   isShaking = true;
   shakeGameboard();
@@ -84,7 +84,7 @@ innerFrame.addEventListener('click', (e) => {
 const addToWordList = (arrOfLetters) => {
   let wordtoList = arrOfLetters.join('').toLowerCase();
   collectData(wordtoList);
-  let newWord = `<li class="word">${wordtoList.toLowerCase()}<span class="wordpoints"></span></li>`
+  let newWord = `<li class="word">${wordtoList.toLowerCase()} <span class="wordpoints"></span></li>`
   document.getElementById('word-list').innerHTML += newWord;
   wordList.push(wordtoList);
   word.splice(0, word.length);
@@ -165,6 +165,7 @@ const timer = () => {
   }
 }
 
+
 // Points
 const scoring = {
   1: 0,
@@ -178,8 +179,15 @@ const scoring = {
 }
 
 const addPoints = (wordLength) => {
-  console.log("you get " + scoring[wordLength] + " points");
+  const wordpoints = document.querySelectorAll('.wordpoints');
+  let lastWord = wordpoints[wordpoints.length-1];
   points += scoring[wordLength];
   scoreboard.innerHTML = points;
-  console.log(wordPoints.inerHTML);
+  lastWord.innerHTML = `+ ${scoring[wordLength]}`;
+  console.log(wordpoints.length-1);
+}
+
+const resetPoints = () => {
+  points = 0;
+  scoreboard.innerHTML = points;
 }

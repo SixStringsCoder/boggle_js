@@ -148,6 +148,11 @@
   text-decoration: line-through;
   color: #9D392A;
 }
+.wordpoints {
+  font-size: 1.3rem;
+  color: #D06C23;
+  font-weight: bold;
+}
 
 /* INSTRUCTIONS */
 #instructions-cont {
