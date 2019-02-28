@@ -146,6 +146,7 @@
 }
 .notaWord {
   text-decoration: line-through;
+  color: #9D392A;
 }
 
 /* INSTRUCTIONS */

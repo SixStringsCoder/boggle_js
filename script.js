@@ -9,10 +9,14 @@ const innerFrame = document.querySelector('#inner-frame');
 const gameboard = document.querySelector('#gameboard-container');
 const shakeBtn = document.getElementById('shakeBtn');
 const wordlistDOM = document.querySelector('#word-list');
+const scoreboard = document.querySelector('#points');
+const wordPoints = document.querySelectorAll('.wordpoints');
 const addWord = document.getElementById('addWordBtn');
 const word = [];
 const wordList = [];
 let isShaking = false;
+let points = 0;
+
 
 const shakeDice = (arrOfLetters) => {
   const numbOfDice = 16;
@@ -78,9 +82,9 @@ innerFrame.addEventListener('click', (e) => {
 });
 
 const addToWordList = (arrOfLetters) => {
-  let wordtoList = arrOfLetters.join('');
+  let wordtoList = arrOfLetters.join('').toLowerCase();
   collectData(wordtoList);
-  let newWord = `<li class="word">${wordtoList.toLowerCase()}</li>`
+  let newWord = `<li class="word">${wordtoList.toLowerCase()}<span class="wordpoints"></span></li>`
   document.getElementById('word-list').innerHTML += newWord;
   wordList.push(wordtoList);
   word.splice(0, word.length);
@@ -97,7 +101,7 @@ const removeHighlight = () => {
   });
 }
 
-// API to check word submitted
+// API to check if added word is good
 addWord.addEventListener('click', () => {
   addToWordList(word);
 });
@@ -112,10 +116,12 @@ function checkStatus(response) {
 
 const wordIsWrong = () => {
   console.log("Sorry, Not a word.");
+  wordlistDOM.lastChild.classList.add('notaWord');
 }
 
-const wordIsRight = () => {
+const wordIsRight = (wordLength) => {
   console.log("It's a word!");
+  return addPoints(wordLength);
 }
 
 // If word is in dictionary or not
@@ -123,8 +129,9 @@ const checkWord = (dataObj) => {
   const notaWord = Object.keys(dataObj.corrections).length;
   // Length of 1 means word is wrong, 'corrections' are present
   // Length of 0 means word is right, no corrections are given
-  notaWord ? wordIsWrong() : wordIsRight();
-  //console.log(dataObj);
+  let wordLength = dataObj.original.length
+  notaWord ? wordIsWrong() : wordIsRight(wordLength);
+  console.log(dataObj);
 }
 
 function collectData(word) {
@@ -156,4 +163,23 @@ const timer = () => {
     timeDisplay.innerHTML = startTime;
     startTime === 0 ? clearInterval(t) : startTime -= 1;
   }
+}
+
+// Points
+const scoring = {
+  1: 0,
+  2: 0,
+  3: 1,
+  4: 1,
+  5: 2,
+  6: 3,
+  7: 4,
+  8: 11,
+}
+
+const addPoints = (wordLength) => {
+  console.log("you get " + scoring[wordLength] + " points");
+  points += scoring[wordLength];
+  scoreboard.innerHTML = points;
+  console.log(wordPoints.inerHTML);
 }
